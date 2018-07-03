@@ -35,6 +35,12 @@ namespace StandardErrorMessages
 					options.Filters.Add<ValidateModelAttribute>();
 				})
 				.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+			services.Configure<ApiBehaviorOptions>(o =>
+			{
+				o.InvalidModelStateResponseFactory = ctx =>
+					new JsonResult(ErrorResponse.InvalidModel(ctx.ModelState));
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -42,7 +42,7 @@ namespace StandardErrorMessages
 
 		private static Uri GetErrorUri(string errType)
 		{
-			return new System.Uri($"/Docs/Errors/{errType}");
+			return new System.Uri($"/Docs/Errors/{errType}", UriKind.Relative);
 		}
 
 		internal static ErrorResponse Exception(Exception ex)
